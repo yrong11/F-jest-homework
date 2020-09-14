@@ -7,6 +7,12 @@ test("TODO 11", () => {
   forEach([1, 2], mockCallback);
 
   // TODO 11: add assertion
+  expect(mockCallback).toHaveBeenCalled();
+  expect(mockCallback).toHaveBeenCalledWith(1);
+  expect(mockCallback).toHaveBeenCalledWith(2);
+  expect(mockCallback.mock.calls.length).toBe(2);
+  expect(mockCallback.mock.results[0].value).toBe(43);
+  expect(mockCallback.mock.results[1].value).toBe(44);
 });
 
 test("TODO 12", () => {
@@ -17,8 +23,8 @@ test("TODO 12", () => {
     .mockReturnValue(true);
 
   // TODO 12: to add "expected" value
-  expect(mockFn()).toBe(expected);
-  expect(mockFn()).toBe(expected);
-  expect(mockFn()).toBe(expected);
-  expect(mockFn()).toBe(expected);
+  expect(mockFn()).toBe(42);
+  expect(mockFn()).toBe("string");
+  expect(mockFn()).toBe(true);
+  expect(mockFn()).toBe(true);
 });
